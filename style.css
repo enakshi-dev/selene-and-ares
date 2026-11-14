@@ -1,0 +1,91 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #10172f;
+  color: white;
+  text-align: center;
+}
+
+header {
+  padding: 30px 15px;
+  background: #182447;
+}
+
+header h1 {
+  font-size: 38px;
+  letter-spacing: 3px;
+  color: #f5d77b;
+}
+
+header p {
+  margin-top: 10px;
+  color: #c5d8ff;
+}
+
+main {
+  padding: 30px 15px;
+}
+
+.welcome {
+  margin: 20px auto 35px;
+}
+
+.welcome h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.welcome p {
+  margin-bottom: 20px;
+  color: #d4ddf5;
+}
+
+button {
+  padding: 14px 25px;
+  border: none;
+  border-radius: 30px;
+  background: #f5c85b;
+  color: #17203a;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ffe49a;
+}
+
+.moon {
+  min-height: 260px;
+  max-width: 650px;
+  margin: auto;
+  padding: 40px 15px;
+  border-radius: 25px;
+  background: linear-gradient(#26375d, #77758d);
+}
+
+.astronaut {
+  font-size: 75px;
+  margin: 10px;
+}
+
+.moon-object {
+  font-size: 55px;
+}
+
+.moon p {
+  margin-top: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+#message {
+  margin-top: 25px;
+  color: #f5d77b;
+}
