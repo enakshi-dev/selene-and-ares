@@ -4,31 +4,172 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ASTROGO | Space Explorers</title>
+
+  <title>ASTROGO | Explore Beyond</title>
+
+  <meta name="description" content="Explore the Moon and Mars, discover the stories of space exploration, and become a Space Explorer!">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header>
-    <h1>🚀 ASTROGO</h1>
-    <p>Explore. Discover. Protect.</p>
+
+  <!-- STAR BACKGROUND -->
+  <div class="stars" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
+  <header class="navbar">
+    <a href="#" class="logo">✦ ASTROGO</a>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#planets">Explore</a>
+      <a href="#mission">Our Mission</a>
+    </nav>
+
+    <a href="#planets" class="nav-button">Let's Explore ✧</a>
   </header>
 
+  <!-- HERO SECTION -->
   <main>
-    <section class="welcome">
-      <h2>Welcome, Space Explorer!</h2>
-      <p>Your adventure begins on the Moon.</p>
-      <button onclick="startGame()">Start Exploring 🚀</button>
+
+    <section class="hero" id="home">
+
+      <div class="hero-content">
+
+        <span class="eyebrow">
+          ✧ YOUR COSMIC ADVENTURE STARTS HERE ✧
+        </span>
+
+        <h1>
+          THE UNIVERSE<br>
+          IS YOURS TO <span>EXPLORE.</span>
+        </h1>
+
+        <p class="hero-description">
+          Travel across distant worlds, discover forgotten
+          space treasures and uncover the incredible stories
+          humans left behind.
+        </p>
+
+        <a href="#planets" class="primary-button">
+          START EXPLORING <span>→</span>
+        </a>
+
+        <div class="hero-note">
+          ✦ TWO WORLDS. COUNTLESS DISCOVERIES.
+        </div>
+
+      </div>
+
+      <div class="hero-visual">
+        <img
+          src="assets/astronaut.png"
+          alt="ASTROGO space explorer"
+          class="hero-astronaut"
+        >
+      </div>
+
     </section>
 
-    <section class="moon">
-      <div class="astronaut">👩‍🚀</div>
-      <div class="moon-object">🌑</div>
-      <p>MISSION: EXPLORE THE MOON</p>
+    <!-- PLANET SELECTION -->
+    <section class="planets-section" id="planets">
+
+      <div class="section-heading">
+        <span>CHOOSE YOUR DESTINATION</span>
+        <h2>Two Worlds. One Adventure.</h2>
+        <p>Where will your exploration begin?</p>
+      </div>
+
+      <div class="planet-grid">
+
+        <!-- MOON CARD -->
+        <article class="planet-card moon-card">
+
+          <img
+            src="assets/moon.jpg"
+            alt="The Moon and its lunar landscape"
+            class="planet-image"
+          >
+
+          <div class="planet-info">
+            <span class="planet-label">DESTINATION 01</span>
+            <h3>THE MOON</h3>
+            <p>
+              Explore lunar landscapes and discover
+              the remains of humanity's first Moon missions.
+            </p>
+
+            <button class="planet-button" onclick="selectPlanet('Moon')">
+              EXPLORE THE MOON →
+            </button>
+          </div>
+
+        </article>
+
+        <!-- MARS CARD -->
+        <article class="planet-card mars-card">
+
+          <img
+            src="assets/mars.jpg"
+            alt="The red planet Mars"
+            class="planet-image"
+          >
+
+          <div class="planet-info">
+            <span class="planet-label">DESTINATION 02</span>
+            <h3>THE RED PLANET</h3>
+            <p>
+              Journey across Mars and uncover the
+              stories of robotic explorers.
+            </p>
+
+            <button class="planet-button" onclick="selectPlanet('Mars')">
+              EXPLORE MARS →
+            </button>
+          </div>
+
+        </article>
+
+      </div>
+
     </section>
 
-    <p id="message">Ready for your first space adventure?</p>
+    <!-- MISSION SECTION -->
+    <section class="mission-section" id="mission">
+
+      <span class="section-kicker">OUR COSMIC PROMISE</span>
+
+      <h2>Explore the Past.<br><span>Protect the Future.</span></h2>
+
+      <p>
+        Every spacecraft has a story. Every discovery matters.
+        Learn about the human-made objects left on other worlds
+        and why responsible exploration matters.
+      </p>
+
+      <div class="mission-values">
+        <div>✧ DISCOVER</div>
+        <div>✧ LEARN</div>
+        <div>✧ PROTECT</div>
+      </div>
+
+    </section>
+
   </main>
 
+  <!-- FOOTER -->
+  <footer>
+    <p>✦ ASTROGO</p>
+    <span>Made for curious minds and future explorers.</span>
+    <small>SELENE & ARES · SPACE APPS CHALLENGE 2026</small>
+  </footer>
+
   <script src="game.js"></script>
+
 </body>
 </html>
