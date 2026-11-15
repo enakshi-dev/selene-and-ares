@@ -28,18 +28,18 @@ const artifactImages = {
   lunarModule: new Image()
 };
 
-artifactImages.ingenuity.src = "assets/ingenuity.png";
-artifactImages.marsRover.src = "assets/mars rover.png";
-artifactImages.lunarRover.src = "assets/lunar rover.png";
-artifactImages.lunarModule.src = "assets/lunar module.png";
+artifactImages.ingenuity.src = "assets/ingenuity.png.png";
+artifactImages.marsRover.src = "assets/mars rover.png.png";
+artifactImages.lunarRover.src = "assets/lunar rover.png.png";
+artifactImages.lunarModule.src = "assets/lunar module.png.png";
 
 const landscapeImages = {
   moon: new Image(),
   mars: new Image()
 };
 
-landscapeImages.moon.src = "assets/moon land.png";
-landscapeImages.mars.src = "assets/mars land.png";
+landscapeImages.moon.src = "assets/moon land.png.png";
+landscapeImages.mars.src = "assets/mars land.png.png";
 
 function getArtifactImage(name) {
   const n = name.toLowerCase();
