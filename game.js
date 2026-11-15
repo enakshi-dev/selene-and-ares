@@ -288,34 +288,26 @@ function drawGame() {
     return;
   }
 
-  const isMoon = currentWorld === "moon";
-
-  // Draw the selected planet background
   const background = landscapeImages[currentWorld];
 
-  if (background.complete && background.naturalWidth > 0) {
-    ctx.drawImage(
-      background,
-      0,
-      0,
-      canvas.width,
-      canvas.height
-    );
+  // Draw planet landscape
+  if (background && background.complete && background.naturalWidth > 0) {
+    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
   } else {
-    ctx.fillStyle = isMoon ? "#77758b" : "#a65345";
+    ctx.fillStyle = currentWorld === "moon" ? "#77758b" : "#a65345";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   }
 
-  // Draw discoverable artifacts
   nearbyArtifact = null;
 
+  // Draw artifacts
   artifacts[currentWorld].forEach(artifact => {
     const found = discovered.includes(artifact.name);
     const img = getArtifactImage(artifact.name);
 
     if (img && img.complete && img.naturalWidth > 0) {
-      const width = 65;
-      const height = 52;
+      const width = 90;
+      const height = 75;
 
       ctx.globalAlpha = found ? 0.5 : 1;
 
@@ -329,9 +321,10 @@ function drawGame() {
 
       ctx.globalAlpha = 1;
     } else {
+      // Temporary marker for artifacts without their own model
       ctx.fillStyle = found ? "#75e6c1" : "#ffd66b";
       ctx.beginPath();
-      ctx.arc(artifact.x, artifact.y, 13, 0, Math.PI * 2);
+      ctx.arc(artifact.x, artifact.y, 9, 0, Math.PI * 2);
       ctx.fill();
     }
 
@@ -345,19 +338,33 @@ function drawGame() {
     }
   });
 
-  // Draw astronaut
-  ctx.fillStyle = "#d9e6ff";
-  ctx.beginPath();
-  ctx.arc(player.x, player.y, 17, 0, Math.PI * 2);
-  ctx.fill();
+  // Draw astronaut PNG
+  if (
+    astronautImage.complete &&
+    astronautImage.naturalWidth > 0
+  ) {
+    ctx.drawImage(
+      astronautImage,
+      player.x - 28,
+      player.y - 35,
+      56,
+      70
+    );
+  } else {
+    // Fallback until astronaut image loads
+    ctx.fillStyle = "#d9e6ff";
+    ctx.beginPath();
+    ctx.arc(player.x, player.y, 17, 0, Math.PI * 2);
+    ctx.fill();
 
-  ctx.fillStyle = "#6b91d9";
-  ctx.beginPath();
-  ctx.arc(player.x, player.y - 2, 9, 0, Math.PI * 2);
-  ctx.fill();
+    ctx.fillStyle = "#6b91d9";
+    ctx.beginPath();
+    ctx.arc(player.x, player.y - 2, 9, 0, Math.PI * 2);
+    ctx.fill();
 
-  ctx.fillStyle = "#ffffff";
-  ctx.fillRect(player.x - 12, player.y + 15, 24, 8);
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(player.x - 12, player.y + 15, 24, 8);
+  }
 
   // Discovery prompt
   if (nearbyArtifact) {
@@ -367,34 +374,13 @@ function drawGame() {
     ctx.fillText(
       "PRESS E TO DISCOVER",
       player.x,
-      player.y - 35
+      player.y - 45
     );
   }
 
   requestAnimationFrame(drawGame);
 }
 
-// DISCOVERY PANEL
-
-function openDiscovery() {
-  if (!nearbyArtifact) return;
-
-  document.getElementById("artifactTitle").textContent =
-    nearbyArtifact.name;
-
-  document.getElementById("artifactDescription").textContent =
-    nearbyArtifact.fact;
-
-  document.getElementById("discoveryPanel").hidden = false;
-}
-
-function closeDiscovery() {
-  const panel = document.getElementById("discoveryPanel");
-
-  if (panel) {
-    panel.hidden = true;
-  }
-}
 
 // COLLECT ARTIFACT
 
