@@ -419,13 +419,28 @@ function collectArtifact() {
 
 // KEYBOARD CONTROLS
 
-document.addEventListener("keydown", event => {
+ document.addEventListener("keydown", function(event) {
   const key = event.key.toLowerCase();
-  keys[key] = true;
+
+  if (
+    key === "arrowup" ||
+    key === "arrowdown" ||
+    key === "arrowleft" ||
+    key === "arrowright" ||
+    key === " "
+  ) {
+    event.preventDefault();
+  }
 
   if (key === "e") {
     openDiscovery();
   }
+
+  keys[key] = true;
+});
+
+document.addEventListener("keyup", function(event) {
+  keys[event.key.toLowerCase()] = false;
 });
 
 document.addEventListener("keyup", event => {
