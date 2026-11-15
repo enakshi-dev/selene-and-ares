@@ -1,1 +1,71 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASTROGO | Space Exploration</title>
+  <link rel="stylesheet" href="game.css">
+</head>
+<body>
+
+  <header class="game-header">
+    <a href="index.html" class="back-button">← HOME</a>
+    <h1>✦ ASTROGO EXPLORATION</h1>
+    <div class="score">⭐ <span id="stars">0</span></div>
+  </header>
+
+  <main>
+    <section class="mission-select" id="missionSelect">
+      <h2>CHOOSE YOUR WORLD</h2>
+      <p>Your exploration adventure begins here.</p>
+
+      <div class="world-options">
+        <button onclick="startMission('moon')">
+          🌙 EXPLORE THE MOON
+        </button>
+
+        <button onclick="startMission('mars')">
+          🔴 EXPLORE MARS
+        </button>
+      </div>
+    </section>
+
+    <section class="exploration" id="exploration" hidden>
+      <div class="world-heading">
+        <h2 id="worldTitle">YOUR MISSION</h2>
+        <button onclick="returnToMissions()">CHANGE WORLD</button>
+      </div>
+
+      <div class="game-container">
+        <canvas id="gameCanvas" width="900" height="500">
+          Your browser does not support Canvas.
+        </canvas>
+      </div>
+
+      <div class="game-controls">
+        <p>MOVE: ← → ↑ ↓ OR W A S D</p>
+        <p>DISCOVER: E</p>
+      </div>
+
+      <div class="discovery-panel" id="discoveryPanel" hidden>
+        <button class="close-button" onclick="closeDiscovery()">✕</button>
+        <h2 id="artifactTitle"></h2>
+        <p id="artifactDescription"></p>
+        <button id="collectButton" onclick="collectArtifact()">
+          ADD TO COLLECTION
+        </button>
+      </div>
+
+      <div class="collection">
+        <h3>✦ DISCOVERY COLLECTION</h3>
+        <p id="collectionCount">Artifacts discovered: 0</p>
+        <div id="collectionList"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
+
