@@ -34,7 +34,7 @@
           <h1>ASTRO<span>GO</span></h1>
           <p class="entrance-tagline">THE FORGOTTEN WORLDS</p>
           <p class="entrance-description">Explore the traces humanity has left across two remarkable worlds.</p>
-          <div class="entrance-portals">
+          <div class="entrance-portals" id="entrancePortals">
             <button class="portal mars-portal" type="button" data-open-world="mars" aria-label="Enter the Mars exhibition">
               <span class="portal-ring"><span class="portal-planet">♂</span></span>
               <strong>MARS</strong><small>THE RED PLANET · 08 EXHIBITS</small>
@@ -56,6 +56,9 @@
     </section>
 
     <section id="moon" class="view exhibition-view">
+      <div class="exhibition-top-bar section-wrap">
+        <button class="button back-home-btn" type="button" data-view="home">← Back to Home</button>
+      </div>
       <div class="exhibition-hero moon-exhibition">
         <div class="exhibition-inner"><div class="eyebrow">WORLD 01 · LUNAR ARCHIVE</div><h1>The Moon<span>.</span></h1><p>Quiet witnesses to one giant leap. Explore the hardware and experiments that helped humans reach another world.</p><div class="exhibition-stats"><span><b id="moonProgressText">0 / 8</b><small>DISCOVERED</small></span><span><b>1969—1972</b><small>APOLLO ERA</small></span><span><b>8</b><small>EXHIBITS</small></span></div></div>
       </div>
@@ -63,6 +66,9 @@
     </section>
 
     <section id="mars" class="view exhibition-view">
+      <div class="exhibition-top-bar section-wrap">
+        <button class="button back-home-btn" type="button" data-view="home">← Back to Home</button>
+      </div>
       <div class="exhibition-hero mars-exhibition">
         <div class="exhibition-inner"><div class="eyebrow">WORLD 02 · MARTIAN ARCHIVE</div><h1>Mars<span>.</span></h1><p>From bouncing landers to long-distance rovers, discover the machines that taught us how to explore the Red Planet.</p><div class="exhibition-stats"><span><b id="marsProgressText">0 / 8</b><small>DISCOVERED</small></span><span><b>1997—2021</b><small>ROBOTIC ERA</small></span><span><b>8</b><small>EXHIBITS</small></span></div></div>
       </div>

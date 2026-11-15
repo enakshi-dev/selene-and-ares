@@ -9,7 +9,9 @@ Moon references:
 - Apollo 12 and Surveyor 3: https://science.nasa.gov/resource/apollo-12-and-surveyor-3/
 
 Mars references:
-- The Second Rover Image: https://science.nasa.gov/resource/the-second-rover-image/
+- Mars Pathfinder Airbags and Sojourner Rover (PIA00614): https://www.jpl.nasa.gov/images/pia00614-airbags-and-sojourner-rover/
+- The Second Rover Image (PIA04315): https://science.nasa.gov/photojournal/the-second-rover-image/
+- Close-up of Deflated Airbag (PIA00768): https://science.nasa.gov/photojournal/close-up-of-deflated-airbag/
 - Still Life with Rover: https://science.nasa.gov/resource/still-life-with-rover/
 - Opportunity Rover's Final Mars Images: https://science.nasa.gov/resource/opportunity-rovers-final-mars-images/
 - Perseverance Checks Out Ingenuity: https://science.nasa.gov/resource/perseverance-checks-out-ingenuity/

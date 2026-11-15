@@ -11,7 +11,7 @@
 .entrance-copy h1 span{color:#9fdbff}
 .entrance-tagline{font:700 10px "Space Grotesk";letter-spacing:5px;color:#c2b7f3;margin:12px 0 18px}
 .entrance-description{font-size:13px;color:#aaa9c1;line-height:1.8;margin:0}
-.entrance-portals{display:flex;justify-content:center;align-items:start;gap:clamp(35px,10vw,130px);margin:38px auto 24px}
+.entrance-portals{display:flex;justify-content:center;align-items:start;gap:clamp(35px,10vw,130px);margin:38px auto 24px;transition:transform .4s ease}
 .portal{width:clamp(145px,22vw,205px);border:0;background:none;display:flex;align-items:center;flex-direction:column;cursor:pointer;padding:0;transition:transform .3s}
 .portal:hover{transform:translateY(-8px) scale(1.035)}
 .portal-ring{width:clamp(130px,19vw,185px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;position:relative;isolation:isolate;transition:.3s}
@@ -26,6 +26,12 @@
 .entrance-footer span:nth-child(2){color:#a9dfff}.entrance-footer span:nth-child(3){color:#ffb49c}
 .entrance-note{display:grid;grid-template-columns:42px 1fr 1fr;gap:24px;align-items:center;padding-top:55px;padding-bottom:65px}
 .note-star{font-size:31px;color:#a9dfff}.entrance-note h2{font:600 clamp(27px,4vw,39px)/1.12 "Space Grotesk";margin:9px 0 0;letter-spacing:-1.5px}.entrance-note h2 em{font-style:normal;color:#b8a1ff}.entrance-note>p{font-size:12px;color:#a3a1b4;line-height:1.9;margin:0}
+
+/* Exhibition top bar & Back to Home button */
+.exhibition-top-bar{padding-top:24px;padding-bottom:0}
+.back-home-btn{background:rgba(165,139,234,0.15);color:#d7c8ff;border:1px solid rgba(165,139,234,0.35);padding:10px 16px;font-size:10px;font-weight:600;letter-spacing:1px;border-radius:6px;cursor:pointer;transition:all .2s ease}
+.back-home-btn:hover{background:rgba(165,139,234,0.28);border-color:#a58bea;transform:translateY(-2px)}
+
 .exhibition-hero{min-height:260px}
 .exhibition-hero:before{background:linear-gradient(90deg,#080914d9,#08091466),linear-gradient(0deg,#080914,transparent 55%)}
 .theme-moon{--world-glow:#b9d4f2;--world-accent:#c9d8ed;--world-deep:#222b42}
@@ -53,6 +59,10 @@
 .artifact-card.discovered{border-color:var(--world-glow,#80d9d0)}
 .modal-visual.moon{background:radial-gradient(circle at 50% 45%,#8e9eb7,#222a40 72%)}
 .modal-visual.mars{background:radial-gradient(circle at 50% 45%,#b66a4d,#38222b 72%)}
+
+.highlight-pulse{animation:pulsePortal 1.2s ease}
+@keyframes pulsePortal{0%{transform:scale(1)}50%{transform:scale(1.04);filter:drop-shadow(0 0 25px rgba(165,139,234,0.6))}100%{transform:scale(1)}}
+
 @media(max-width:700px){
  .entrance-screen{min-height:calc(100vh - 70px);padding:45px 15px}
  .entrance-copy h1{letter-spacing:-4px}
@@ -67,7 +77,6 @@
  .exhibit-content:before{top:125px;left:0;right:0;height:600px}
 }
 @media(max-width:420px){.entrance-portals{gap:10px}.portal strong{font-size:12px}.entrance-footer{gap:13px;font-size:7px}.artifact-thumb{height:120px}}
-
 
 /* NASA exhibit photography */
 .artifact-thumb { isolation: isolate; }

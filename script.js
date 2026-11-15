@@ -31,9 +31,9 @@ const artifactImages = {
   "moon-6": "https://assets.science.nasa.gov/content/dam/science/cds/general/images/2023/03/2-apollo-15-on-moon-1.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
   "moon-7": "https://images-assets.nasa.gov/image/S72-37002/S72-37002~large.jpg?fit=clip&h=1320&w=1920",
   "moon-8": "https://assets.science.nasa.gov/content/dam/science/psd/lunar-science/2023/08/detail_su5_67_h_1340.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
-  "mars-1": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/4/40057_PIA04315.jpg?fit=clip&h=1024&w=1024",
+  "mars-1": "https://images-assets.nasa.gov/image/PIA00614/PIA00614~large.jpg",
   "mars-2": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/4/40057_PIA04315.jpg?fit=clip&h=1024&w=1024",
-  "mars-3": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/4/40057_PIA04315.jpg?fit=clip&h=1024&w=1024",
+  "mars-3": "https://images-assets.nasa.gov/image/PIA00768/PIA00768~large.jpg",
   "mars-4": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/3/6/36170_PIA16063_NewNavPerspective.jpg?fit=clip&h=1024&w=1024",
   "mars-5": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/p/i/a/PIA22909.jpg?fit=clip&h=1024&w=1024",
   "mars-6": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/3/6/36510_pia16238.jpg?fit=clip&h=1024&w=1024",
@@ -68,7 +68,8 @@ function updateProgress(){
       moon:["moonCardProgress","moonProgressText","moonProgressPercent","moonProgressBar","moonAchievement"],
       mars:["marsCardProgress","marsProgressText","marsProgressPercent","marsProgressBar","marsAchievement"]
     }[world];
-    document.getElementById(ids[0]).textContent = `${count} / 8 DISCOVERED`;
+    const textEl = document.getElementById(ids[0]);
+    if(textEl) textEl.textContent = `${count} / 8 DISCOVERED`;
     document.getElementById(ids[1]).textContent = `${count} / 8`;
     document.getElementById(ids[2]).textContent = `${percent}%`;
     document.getElementById(ids[3]).style.width = `${percent}%`;
@@ -77,6 +78,7 @@ function updateProgress(){
 }
 function renderArtifacts(world){
   const container = document.getElementById(`${world}Artifacts`);
+  if(!container) return;
   container.innerHTML = "";
   artifacts[world].forEach((item,index) => {
     const isFound = discoveries.includes(item.id);
@@ -93,7 +95,8 @@ function showView(view){
   if(view === "moon" || view === "mars") document.body.classList.add(`theme-${view}`);
   document.querySelectorAll(".view").forEach(section => section.classList.toggle("active",section.id === view));
   document.querySelectorAll(".nav-link").forEach(link => link.classList.toggle("active",link.dataset.view === view));
-  document.getElementById("mainNav").classList.remove("open");
+  const mainNav = document.getElementById("mainNav");
+  if(mainNav) mainNav.classList.remove("open");
   window.location.hash = view;
   window.scrollTo({top:0,behavior:"smooth"});
 }
@@ -129,9 +132,25 @@ function closeModal(){
   document.body.style.overflow = "";
   currentArtifact = null;
 }
-document.getElementById("enterMuseum").addEventListener("click",() => showView("moon"));
+
+// PROBLEM C FIX: Explore Now button scrolls to world portals and prompts selection instead of forcing Moon
+document.getElementById("enterMuseum").addEventListener("click", () => {
+  const portalsSection = document.getElementById("entrancePortals");
+  if(portalsSection) {
+    portalsSection.scrollIntoView({ behavior: "smooth", block: "center" });
+    portalsSection.classList.add("highlight-pulse");
+    setTimeout(() => portalsSection.classList.remove("highlight-pulse"), 1500);
+  }
+});
+
 document.querySelectorAll("[data-open-world]").forEach(button => button.addEventListener("click",() => showView(button.dataset.openWorld)));
 document.querySelectorAll(".nav-link").forEach(link => link.addEventListener("click",event => {event.preventDefault();showView(link.dataset.view);}));
+
+// PROBLEM B FIX: Back to Home button listeners
+document.querySelectorAll(".back-home-btn").forEach(btn => {
+  btn.addEventListener("click", () => showView("home"));
+});
+
 document.getElementById("menuToggle").addEventListener("click",() => document.getElementById("mainNav").classList.toggle("open"));
 document.getElementById("modalClose").addEventListener("click",closeModal);
 document.getElementById("artifactModal").addEventListener("click",event => {if(event.target.id === "artifactModal") closeModal();});
