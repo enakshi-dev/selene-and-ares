@@ -21,6 +21,17 @@ const planets = {
 
 // IMAGE LOADING
 
+const astronautImage = new Image();
+
+astronautImage.onload = () => {
+  console.log("Astronaut image loaded!");
+};
+
+astronautImage.onerror = () => {
+  console.error("Astronaut image failed to load:", astronautImage.src);
+};
+
+astronautImage.src = "assets/astronaut.png.png";
 const artifactImages = {
   ingenuity: new Image(),
   marsRover: new Image(),
