@@ -1,175 +1,103 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>ASTROGO | Explore Beyond</title>
-
-  <meta name="description" content="Explore the Moon and Mars, discover the stories of space exploration, and become a Space Explorer!">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080914">
+  <meta name="description" content="ASTROGO: The Forgotten Worlds — an interactive digital museum of human-made artifacts on the Moon and Mars.">
+  <title>ASTROGO — The Forgotten Worlds</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-  <!-- STAR BACKGROUND -->
-  <div class="stars" aria-hidden="true"></div>
-
-  <!-- NAVIGATION -->
-  <header class="navbar">
-    <a href="#" class="logo">✦ ASTROGO</a>
-
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#planets">Explore</a>
-      <a href="#mission">Our Mission</a>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="ASTROGO home"><span class="brand-mark">A</span><span>ASTROGO<small>THE FORGOTTEN WORLDS</small></span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+    <nav id="mainNav" aria-label="Main navigation">
+      <a href="#home" class="nav-link active" data-view="home">Home</a>
+      <a href="#moon" class="nav-link" data-view="moon">Moon</a>
+      <a href="#mars" class="nav-link" data-view="mars">Mars</a>
+      <a href="#about" class="nav-link" data-view="about">About</a>
     </nav>
-
-    <a href="#planets" class="nav-button">Let's Explore ✧</a>
+    <div class="header-progress"><span id="headerCount">0 / 16</span><small>DISCOVERED</small></div>
   </header>
 
-  <!-- HERO SECTION -->
   <main>
-
-    <section class="hero" id="home">
-
-      <div class="hero-content">
-
-        <span class="eyebrow">
-          ✧ YOUR COSMIC ADVENTURE STARTS HERE ✧
-        </span>
-
-        <h1>
-          THE UNIVERSE<br>
-          IS YOURS TO <span>EXPLORE.</span>
-        </h1>
-
-        <p class="hero-description">
-          Travel across distant worlds, discover forgotten
-          space treasures and uncover the incredible stories
-          humans left behind.
-        </p>
-
-        <a href="#planets" class="primary-button">
-          START EXPLORING <span>→</span>
-        </a>
-
-        <div class="hero-note">
-          ✦ TWO WORLDS. COUNTLESS DISCOVERIES.
+    <section id="home" class="view active">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> A DIGITAL SPACE ARCHAEOLOGY MUSEUM</div>
+          <h1>The Forgotten<br><em>Worlds.</em></h1>
+          <p class="hero-tagline">EXPLORE. DISCOVER. PROTECT.</p>
+          <p class="hero-description">Across the Moon and Mars, machines, experiments and mission hardware remain as quiet witnesses to humanity’s first steps beyond Earth. Their missions may be over. Their stories are not.</p>
+          <div class="hero-actions"><button class="button button-primary" id="enterMuseum">Enter the museum <span>↗</span></button><a class="text-link" href="#about">Why space heritage matters <span>→</span></a></div>
+          <div class="hero-meta"><span><b>02</b> WORLDS</span><span><b>16</b> ARTIFACTS</span><span><b>01</b> SHARED LEGACY</span></div>
         </div>
-
-      </div>
-
-      <div class="hero-visual">
-        <img
-          src="assets/astronaut.png"
-          alt="ASTROGO space explorer"
-          class="hero-astronaut"
-        >
-      </div>
-
+        <div class="hero-art" aria-label="Moon and Mars in space">
+          <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+          <div class="planet moon-planet"><span>THE MOON</span></div>
+          <div class="planet mars-planet"><span>MARS</span></div>
+          <div class="hero-caption"><span class="caption-dot"></span> HUMANITY’S FOOTPRINTS, PRESERVED IN TIME</div>
+        </div>
+      </section>
+      <section class="world-section section-wrap">
+        <div class="section-heading"><div><div class="eyebrow">CHOOSE YOUR DESTINATION</div><h2>Two worlds. <em>One legacy.</em></h2></div><p>Every object has a story. Start exploring the places where those stories remain.</p></div>
+        <div class="world-grid">
+          <button class="world-card moon-card" data-open-world="moon">
+            <div class="world-image moon-image"><span class="world-coordinate">00° 40′ 26.7″ N · 23° 28′ 22.7″ E</span><span class="world-number">01 / LUNAR ARCHIVE</span></div>
+            <div class="world-card-body"><div><h3>The Moon</h3><p>Footprints, flags and instruments from the Apollo era.</p></div><span class="circle-arrow">↗</span></div>
+            <div class="world-card-footer"><span>08 EXHIBITS</span><span id="moonCardProgress">0 / 8 DISCOVERED</span></div>
+          </button>
+          <button class="world-card mars-card" data-open-world="mars">
+            <div class="world-image mars-image"><span class="world-coordinate">ARES VALLIS · GALE CRATER · JEZERO CRATER</span><span class="world-number">02 / MARTIAN ARCHIVE</span></div>
+            <div class="world-card-body"><div><h3>Mars</h3><p>Robotic pioneers and the hardware that carried them.</p></div><span class="circle-arrow">↗</span></div>
+            <div class="world-card-footer"><span>08 EXHIBITS</span><span id="marsCardProgress">0 / 8 DISCOVERED</span></div>
+          </button>
+        </div>
+      </section>
+      <section class="manifesto section-wrap">
+        <div class="manifesto-symbol">✳</div><div><div class="eyebrow">THE MUSEUM'S PURPOSE</div><h2>Not everything left behind<br>is <em>forgotten.</em></h2></div><p>These objects are more than hardware. They are records of curiosity, engineering and discovery. Learning their stories helps us explore tomorrow with respect for yesterday.</p>
+      </section>
     </section>
 
-    <!-- PLANET SELECTION -->
-    <section class="planets-section" id="planets">
-
-      <div class="section-heading">
-        <span>CHOOSE YOUR DESTINATION</span>
-        <h2>Two Worlds. One Adventure.</h2>
-        <p>Where will your exploration begin?</p>
+    <section id="moon" class="view exhibition-view">
+      <div class="exhibition-hero moon-exhibition">
+        <div class="exhibition-inner"><div class="eyebrow">WORLD 01 · LUNAR ARCHIVE</div><h1>The Moon<span>.</span></h1><p>Quiet witnesses to one giant leap. Explore the hardware and experiments that helped humans reach another world.</p><div class="exhibition-stats"><span><b id="moonProgressText">0 / 8</b><small>DISCOVERED</small></span><span><b>1969—1972</b><small>APOLLO ERA</small></span><span><b>8</b><small>EXHIBITS</small></span></div></div>
       </div>
-
-      <div class="planet-grid">
-
-        <!-- MOON CARD -->
-        <article class="planet-card moon-card">
-
-          <img
-            src="assets/moon.jpg"
-            alt="The Moon and its lunar landscape"
-            class="planet-image"
-          >
-
-          <div class="planet-info">
-            <span class="planet-label">DESTINATION 01</span>
-            <h3>THE MOON</h3>
-            <p>
-              Explore lunar landscapes and discover
-              the remains of humanity's first Moon missions.
-            </p>
-
-            <button class="planet-button" onclick="selectPlanet('Moon')">
-              EXPLORE THE MOON →
-            </button>
-          </div>
-
-        </article>
-
-        <!-- MARS CARD -->
-        <article class="planet-card mars-card">
-
-          <img
-            src="assets/mars.jpg"
-            alt="The red planet Mars"
-            class="planet-image"
-          >
-
-          <div class="planet-info">
-            <span class="planet-label">DESTINATION 02</span>
-            <h3>THE RED PLANET</h3>
-            <p>
-              Journey across Mars and uncover the
-              stories of robotic explorers.
-            </p>
-
-            <button class="planet-button" onclick="selectPlanet('Mars')">
-              EXPLORE MARS →
-            </button>
-          </div>
-
-        </article>
-
-      </div>
-
+      <div class="section-wrap exhibit-content"><div class="collection-heading"><div><div class="eyebrow">THE COLLECTION</div><h2>Objects of <em>exploration.</em></h2></div><div class="progress-block"><div class="progress-label"><span>YOUR LUNAR LOG</span><b id="moonProgressPercent">0%</b></div><div class="progress-track"><span id="moonProgressBar"></span></div></div></div><div class="artifact-grid" id="moonArtifacts"></div><div class="achievement" id="moonAchievement"><span>✦</span><div><b>LUNAR ARCHIVIST</b><small>You explored every lunar exhibit. The stories are now part of your log.</small></div></div></div>
     </section>
 
-    <!-- MISSION SECTION -->
-    <section class="mission-section" id="mission">
-
-      <span class="section-kicker">OUR COSMIC PROMISE</span>
-
-      <h2>Explore the Past.<br><span>Protect the Future.</span></h2>
-
-      <p>
-        Every spacecraft has a story. Every discovery matters.
-        Learn about the human-made objects left on other worlds
-        and why responsible exploration matters.
-      </p>
-
-      <div class="mission-values">
-        <div>✧ DISCOVER</div>
-        <div>✧ LEARN</div>
-        <div>✧ PROTECT</div>
+    <section id="mars" class="view exhibition-view">
+      <div class="exhibition-hero mars-exhibition">
+        <div class="exhibition-inner"><div class="eyebrow">WORLD 02 · MARTIAN ARCHIVE</div><h1>Mars<span>.</span></h1><p>From bouncing landers to long-distance rovers, discover the machines that taught us how to explore the Red Planet.</p><div class="exhibition-stats"><span><b id="marsProgressText">0 / 8</b><small>DISCOVERED</small></span><span><b>1997—2021</b><small>ROBOTIC ERA</small></span><span><b>8</b><small>EXHIBITS</small></span></div></div>
       </div>
-
+      <div class="section-wrap exhibit-content"><div class="collection-heading"><div><div class="eyebrow">THE COLLECTION</div><h2>Machines that made <em>history.</em></h2></div><div class="progress-block"><div class="progress-label"><span>YOUR MARTIAN LOG</span><b id="marsProgressPercent">0%</b></div><div class="progress-track"><span id="marsProgressBar"></span></div></div></div><div class="artifact-grid" id="marsArtifacts"></div><div class="achievement" id="marsAchievement"><span>✦</span><div><b>MARTIAN ARCHIVIST</b><small>You explored every Martian exhibit. The stories are now part of your log.</small></div></div></div>
     </section>
 
+    <section id="about" class="view">
+      <div class="about-hero section-wrap"><div class="eyebrow">OUR SHARED RESPONSIBILITY</div><h1>Explore.<br><em>Document.</em><br>Protect.</h1><p>Space heritage is a record of how humanity learned to reach beyond Earth. Preserving it helps future explorers understand where we began.</p></div>
+      <div class="principles section-wrap">
+        <article><span>01</span><h3>Explore with curiosity.</h3><p>Artifacts preserve the history of human exploration. They show the challenges, creativity and teamwork behind every mission.</p></article>
+        <article><span>02</span><h3>Document with care.</h3><p>Historic sites and instruments can help scientists study how materials and technology change in the space environment.</p></article>
+        <article><span>03</span><h3>Protect what remains.</h3><p>Landing sites have scientific and cultural value. Future visitors should observe, record and avoid disturbing historic objects.</p></article>
+      </div>
+      <div class="preserve-quote"><div class="eyebrow">A NOTE TO FUTURE EXPLORERS</div><p>“The next footprint should not erase the last.”</p><small>Respect every world we visit.</small></div>
+      <div class="sources section-wrap"><div class="eyebrow">LEARN MORE · NASA SOURCES</div><h2>Stories grounded in <em>science.</em></h2><p>This independent educational project is not an official NASA website. Historical descriptions are based on NASA mission and heritage resources.</p><div class="source-links"><a href="https://science.nasa.gov/mission/mars-pathfinder/" target="_blank" rel="noopener">Mars Pathfinder mission ↗</a><a href="https://www.nasa.gov/history/" target="_blank" rel="noopener">NASA History ↗</a><a href="https://www.nasa.gov/wp-content/uploads/2023/12/nasa-usg-lunar-historic-sites-reva.pdf" target="_blank" rel="noopener">Lunar Historic Sites report ↗</a><a href="https://science.nasa.gov/solar-system/skywatching/night-sky-network/landing-on-mars-a-tricky-feat/" target="_blank" rel="noopener">How we land on Mars ↗</a></div></div>
+    </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>✦ ASTROGO</p>
-    <span>Made for curious minds and future explorers.</span>
-    <small>SELENE & ARES · SPACE APPS CHALLENGE 2026</small>
-  </footer>
+  <footer><a class="brand footer-brand" href="#home"><span class="brand-mark">A</span><span>ASTROGO<small>THE FORGOTTEN WORLDS</small></span></a><p>An independent educational museum concept.<br>Explore. Discover. Protect.</p><span class="footer-credit">BUILT FOR NASA SPACE APPS CHALLENGE 2026</span></footer>
 
-  <script src="game.js"></script>
-
+  <div class="modal-backdrop" id="artifactModal" aria-hidden="true">
+    <section class="artifact-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close details">×</button>
+      <div class="modal-visual" id="modalVisual"><span id="modalWorld">LUNAR ARCHIVE</span></div>
+      <div class="modal-content"><div class="eyebrow" id="modalMission"></div><h2 id="modalTitle"></h2><div class="modal-year" id="modalYear"></div><p id="modalStory"></p><div class="modal-fact"><b>WHY IT MATTERS</b><p id="modalWhy"></p></div><div class="modal-fact"><b>WHAT REMAINS</b><p id="modalStatus"></p></div><button class="button button-primary" id="markDiscovered">Mark as discovered ✓</button><p class="modal-note" id="modalNote">Your discovery is saved in this browser.</p></div>
+    </section>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
