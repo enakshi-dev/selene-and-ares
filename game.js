@@ -28,11 +28,17 @@ const artifactImages = {
   lunarRover: new Image(),
   lunarModule: new Image()
 };
+const landscapeImages = {
+  moon: new Image(),
+  mars: new Image()
+};
 
+landscapeImages.moon.src = "assets/moon land.png";
+landscapeImages.mars.src = "assets/mars land.png";
 artifactImages.ingenuity.src = "assets/ingenuity.png";
-artifactImages.marsRover.src = "assets/mars-rover.png";
-artifactImages.lunarRover.src = "assets/lunar-rover.png";
-artifactImages.lunarModule.src = "assets/lunar-module.png";
+artifactImages.marsRover.src = "assets/mars rover.png";
+artifactImages.lunarRover.src = "assets/lunar rover.png";
+artifactImages.lunarModule.src = "assets/lunar module.png";
 
 function getArtifactImage(name) {
   const n = name.toLowerCase();
@@ -74,7 +80,13 @@ function showMessage(message) {
 
   messageBox.textContent = message;
 }
+const landscapeImages = {
+  moon: new Image(),
+  mars: new Image()
+};
 
+landscapeImages.moon.src = "assets/moon-land.png";
+landscapeImages.mars.src = "assets/mars-land.png";
 // GAME ENGINE
 
 const canvas = document.getElementById("gameCanvas");
@@ -181,13 +193,16 @@ function drawGame() {
   ctx.fillStyle = isMoon ? "#10132d" : "#321b37";
   ctx.fillRect(0, 0, 900, 500);
 
-  // Stars
-  for (let i = 0; i < 75; i++) {
-    const x = (i * 137) % 900;
-    const y = (i * 67) % 230;
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(x, y, 2, 2);
-  }
+  // Planet landscape
+const background = landscapeImages[currentWorld];
+
+if (background.complete && background.naturalWidth > 0) {
+  ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+} else {
+  ctx.fillStyle = isMoon ? "#77758b" : "#a65345";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
 
   // Distant landscape
   ctx.fillStyle = isMoon ? "#373a59" : "#743d43";
@@ -217,7 +232,6 @@ function drawGame() {
     ctx.fill();
   }
 
-  // Discoverable artifacts
   
 
   // Discoverable artifacts
