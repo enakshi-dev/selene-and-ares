@@ -1,0 +1,198 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #09051c;
+  color: #f2edff;
+  min-height: 100vh;
+}
+
+.game-header {
+  min-height: 75px;
+  padding: 16px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  background: #170b38;
+  border-bottom: 1px solid #8255ef;
+}
+
+.game-header h1 {
+  font-size: 20px;
+  color: #c5a8ff;
+  letter-spacing: 2px;
+}
+
+.back-button {
+  color: white;
+  text-decoration: none;
+}
+
+.score {
+  color: #ffe18a;
+  font-weight: bold;
+}
+
+.mission-select {
+  text-align: center;
+  padding: 90px 20px;
+}
+
+.mission-select h2 {
+  color: #c5a8ff;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.mission-select p {
+  color: #c9c0e5;
+  margin-bottom: 35px;
+}
+
+.world-options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+button {
+  border: 1px solid #a98aff;
+  border-radius: 12px;
+  padding: 15px 24px;
+  background: linear-gradient(135deg, #8255ef, #394bd8);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px #8255ef;
+}
+
+.exploration {
+  padding: 25px 5%;
+  text-align: center;
+}
+
+.world-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.world-heading h2 {
+  color: #c5a8ff;
+}
+
+.game-container {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  overflow: hidden;
+  border: 2px solid #8255ef;
+  border-radius: 15px;
+  box-shadow: 0 0 25px #39206f;
+  background: #17112e;
+}
+
+#gameCanvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.game-controls {
+  padding: 15px;
+  color: #c5a8ff;
+  line-height: 2;
+}
+
+.collection {
+  max-width: 900px;
+  margin: 25px auto;
+  padding: 20px;
+  border: 1px solid #8255ef;
+  border-radius: 15px;
+  background: #170b38;
+}
+
+.collection h3 {
+  color: #c5a8ff;
+  margin-bottom: 12px;
+}
+
+#collectionList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.collection-item {
+  padding: 10px;
+  border: 1px solid #8255ef;
+  border-radius: 8px;
+  background: #26164c;
+}
+
+.discovery-panel {
+  position: fixed;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90%, 450px);
+  padding: 30px;
+  background: #170b38;
+  border: 2px solid #a98aff;
+  border-radius: 18px;
+  box-shadow: 0 0 40px #8255ef;
+  text-align: center;
+}
+
+.discovery-panel h2 {
+  color: #c5a8ff;
+  margin: 15px 0;
+}
+
+.discovery-panel p {
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.close-button {
+  float: right;
+  padding: 7px 12px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .game-header h1 {
+    font-size: 15px;
+  }
+
+  .mission-select h2 {
+    font-size: 25px;
+  }
+
+  .world-heading {
+    justify-content: center;
+  }
+}
