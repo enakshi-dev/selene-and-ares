@@ -354,13 +354,13 @@ function drawGame() {
     astronautImage.complete &&
     astronautImage.naturalWidth > 0
   ) {
-    ctx.drawImage(
-      astronautImage,
-      player.x - 28,
-      player.y - 35,
-      56,
-      70
-    );
+  ctx.drawImage(
+  astronautImage,
+  player.x - 42,
+  player.y - 55,
+  84,
+  110
+);
   } else {
     // Fallback until astronaut image loads
     ctx.fillStyle = "#d9e6ff";
