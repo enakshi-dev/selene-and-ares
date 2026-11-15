@@ -22,7 +22,38 @@ function startGame() {
     section.scrollIntoView({ behavior: "smooth" });
   }
 }
+const artifactImages = {
+  ingenuity: new Image(),
+  marsRover: new Image(),
+  lunarRover: new Image(),
+  lunarModule: new Image()
+};
 
+artifactImages.ingenuity.src = "assets/ingenuity.png";
+artifactImages.marsRover.src = "assets/mars-rover.png";
+artifactImages.lunarRover.src = "assets/lunar-rover.png";
+artifactImages.lunarModule.src = "assets/lunar-module.png";
+
+function getArtifactImage(name) {
+  const n = name.toLowerCase();
+
+  if (n.includes("ingenuity")) return artifactImages.ingenuity;
+
+  if (
+    n.includes("sojourner") ||
+    n.includes("spirit rover") ||
+    n.includes("opportunity") ||
+    n.includes("curiosity")
+  ) return artifactImages.marsRover;
+
+  if (n.includes("rover")) return artifactImages.lunarRover;
+
+  if (n.includes("descent stage") || n.includes("lander")) {
+    return artifactImages.lunarModule;
+  }
+
+  return null;
+}
 function selectPlanet(planetName) {
   if (!planets[planetName]) return;
   window.location.href = "game.html?world=" + planetName.toLowerCase();
@@ -187,24 +218,34 @@ function drawGame() {
   }
 
   // Discoverable artifacts
+  
+
+  // Discoverable artifacts
   nearbyArtifact = null;
 
   artifacts[currentWorld].forEach(artifact => {
     const found = discovered.includes(artifact.name);
+    const img = getArtifactImage(artifact.name);
 
-    ctx.fillStyle = found ? "#75e6c1" : "#ffd66b";
-    ctx.beginPath();
-    ctx.arc(artifact.x, artifact.y, 13, 0, Math.PI * 2);
-    ctx.fill();
+    if (img && img.complete && img.naturalWidth > 0) {
+      const width = 65;
+      const height = 52;
 
-    ctx.strokeStyle = "#ffffff";
-    ctx.lineWidth = 2;
-    ctx.stroke();
-
-    ctx.fillStyle = "#ffffff";
-    ctx.font = "12px Arial";
-    ctx.textAlign = "center";
-    ctx.fillText(found ? "✓" : "✦", artifact.x, artifact.y + 4);
+      ctx.globalAlpha = found ? 0.5 : 1;
+      ctx.drawImage(
+        img,
+        artifact.x - width / 2,
+        artifact.y - height / 2,
+        width,
+        height
+      );
+      ctx.globalAlpha = 1;
+    } else {
+      ctx.fillStyle = found ? "#75e6c1" : "#ffd66b";
+      ctx.beginPath();
+      ctx.arc(artifact.x, artifact.y, 13, 0, Math.PI * 2);
+      ctx.fill();
+    }
 
     const distance = Math.hypot(
       player.x - artifact.x,
