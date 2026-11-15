@@ -38,7 +38,7 @@ const landscapeImages = {
   mars: new Image()
 };
 
-landscapeImages.moon.src = "assets/moon land.png.png";
+landscapeImages.moon.src = "assets/lunar land.png.png";
 landscapeImages.mars.src = "assets/mars land.png.png";
 
 function getArtifactImage(name) {
@@ -80,12 +80,11 @@ function startGame() {
     section.scrollIntoView({ behavior: "smooth" });
   }
 }
-
 function selectPlanet(planetName) {
-  if (!planets[planetName]) return;
-
-  window.location.href = "game.html?world=" + planetName.toLowerCase();
+  window.location.href =
+    "game.html?world=" + planetName.toLowerCase();
 }
+
 
 function showMessage(message) {
   let messageBox = document.getElementById("game-message");
