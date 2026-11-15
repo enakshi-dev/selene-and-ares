@@ -358,8 +358,8 @@ function drawGame() {
   astronautImage,
   player.x - 42,
   player.y - 55,
-  84,
-  110
+  100,
+  130
 );
   } else {
     // Fallback until astronaut image loads
