@@ -1,0 +1,16 @@
+ASTROGO — NASA exhibit image credits
+
+NASA / NASA Science mission photographs are displayed in the exhibit cards and detail panels.
+Credits remain with NASA and the mission partners shown on the source pages. Some images are representative
+mission photographs rather than close-ups of the exact object named.
+
+Moon references:
+- NASA Views from the Lunar Surface: https://science.nasa.gov/moon/image-galleries/views-from-the-lunar-surface/
+- Apollo 12 and Surveyor 3: https://science.nasa.gov/resource/apollo-12-and-surveyor-3/
+
+Mars references:
+- The Second Rover Image: https://science.nasa.gov/resource/the-second-rover-image/
+- Still Life with Rover: https://science.nasa.gov/resource/still-life-with-rover/
+- Opportunity Rover's Final Mars Images: https://science.nasa.gov/resource/opportunity-rovers-final-mars-images/
+- Perseverance Checks Out Ingenuity: https://science.nasa.gov/resource/perseverance-checks-out-ingenuity/
+- HiRISE Views Perseverance After Landing: https://science.nasa.gov/resource/hirise-views-perseverance-after-landing/

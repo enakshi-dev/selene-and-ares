@@ -21,6 +21,27 @@ const artifacts = {
   ]
 };
 
+// NASA mission photographs used in the exhibit cards and detail panels.
+const artifactImages = {
+  "moon-1": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/detail_as14-66-9306_orig.jpg?fit=clip&h=1024&w=986",
+  "moon-2": "https://images-assets.nasa.gov/image/as11-40-5875/as11-40-5875~large.jpg?fit=clip&h=1920&w=1856",
+  "moon-3": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/detail_as14-67-09361_orig.jpg?fit=clip&h=1002&w=1000",
+  "moon-4": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/detail_as17-134-20473_orig.jpg?fit=clip&h=1024&w=1024",
+  "moon-5": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/a/as12-48-7134.jpg?fit=clip&h=1024&w=1024",
+  "moon-6": "https://assets.science.nasa.gov/content/dam/science/cds/general/images/2023/03/2-apollo-15-on-moon-1.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+  "moon-7": "https://images-assets.nasa.gov/image/S72-37002/S72-37002~large.jpg?fit=clip&h=1320&w=1920",
+  "moon-8": "https://assets.science.nasa.gov/content/dam/science/psd/lunar-science/2023/08/detail_su5_67_h_1340.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+  "mars-1": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/4/40057_PIA04315.jpg?fit=clip&h=1024&w=1024",
+  "mars-2": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/4/40057_PIA04315.jpg?fit=clip&h=1024&w=1024",
+  "mars-3": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/4/40057_PIA04315.jpg?fit=clip&h=1024&w=1024",
+  "mars-4": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/3/6/36170_PIA16063_NewNavPerspective.jpg?fit=clip&h=1024&w=1024",
+  "mars-5": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/p/i/a/PIA22909.jpg?fit=clip&h=1024&w=1024",
+  "mars-6": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/3/6/36510_pia16238.jpg?fit=clip&h=1024&w=1024",
+  "mars-7": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/4/5/45771_PIA24427-HiRISE_Views_Perseverance_After_Landing.jpg?fit=clip&h=1008&w=1930",
+  "mars-8": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/4/8/48430_PIA25968.jpg?fit=clip&h=1127&w=4160"
+};
+Object.values(artifacts).flat().forEach(item => { item.image = artifactImages[item.id] || ""; });
+
 const STORAGE_KEY = "astrogo-discoveries-v1";
 let discoveries = loadDiscoveries();
 let currentArtifact = null;
@@ -62,7 +83,7 @@ function renderArtifacts(world){
     const card = document.createElement("button");
     card.className = `artifact-card${isFound ? " discovered" : ""}`;
     card.type = "button";
-    card.innerHTML = `<div class="artifact-thumb ${world}"><span class="artifact-index">${String(index+1).padStart(2,"0")} / 08</span><span class="artifact-symbol" aria-hidden="true">${item.symbol}</span>${isFound ? '<span class="discovered-mark">✓</span>' : ""}</div><div class="artifact-info"><small>${item.mission.toUpperCase()} · ${item.year}</small><h3>${item.name}</h3><p>${isFound ? "In your discovery log" : "Artifact awaiting discovery"}</p><div class="card-open"><span>OPEN EXHIBIT</span><span>↗</span></div></div>`;
+    card.innerHTML = `<div class="artifact-thumb ${world}"><img class="artifact-photo" src="${item.image}" alt="${item.name} — NASA mission photograph" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.artifact-symbol').style.display='block';"><span class="artifact-index">${String(index+1).padStart(2,"0")} / 08</span><span class="artifact-symbol" aria-hidden="true">${item.symbol}</span>${isFound ? '<span class="discovered-mark">✓</span>' : ""}</div><div class="artifact-info"><small>${item.mission.toUpperCase()} · ${item.year}</small><h3>${item.name}</h3><p>${isFound ? "In your discovery log" : "Artifact awaiting discovery"}</p><div class="card-open"><span>OPEN EXHIBIT</span><span>↗</span></div></div>`;
     card.addEventListener("click", () => openArtifact(world,item.id));
     container.appendChild(card);
   });
@@ -87,7 +108,11 @@ function openArtifact(world,id){
   document.getElementById("modalStory").textContent = item.story;
   document.getElementById("modalWhy").textContent = item.why;
   document.getElementById("modalStatus").textContent = item.status;
-  document.getElementById("modalVisual").className = `modal-visual ${world}`;
+  const modalVisual = document.getElementById("modalVisual");
+  modalVisual.className = `modal-visual ${world}`;
+  modalVisual.style.backgroundImage = `linear-gradient(0deg, #080914bb, transparent 70%), url("${item.image}")`;
+  modalVisual.style.backgroundSize = "cover";
+  modalVisual.style.backgroundPosition = "center";
   const button = document.getElementById("markDiscovered");
   const done = discoveries.includes(item.id);
   button.textContent = done ? "✓ Discovered" : "Mark as discovered ✓";
