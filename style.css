@@ -20,10 +20,12 @@ footer{border-top:1px solid #ffffff12;padding:28px 6%;display:flex;align-items:c
 .portal-ring:before{content:"";position:absolute;inset:0;border-radius:50%;border:5px solid currentColor;box-shadow:0 0 10px currentColor,inset 0 0 18px currentColor,0 0 45px currentColor;opacity:.9}
 .portal-ring:after{content:"";position:absolute;inset:12px;border-radius:50%;border:1px solid currentColor;opacity:.65;box-shadow:0 0 24px currentColor}
 
-/* SELENE & ARES PORTAL ARTWORK INTEGRATION */
-.portal-planet{width:73%;height:73%;border-radius:50%;display:block;background-image:url("SELENE & ARES.png");background-size:220% 100%;box-shadow:inset -18px -15px 28px #0009,0 0 28px currentColor;z-index:1}
-.moon-portal{color:#83dfff}.moon-portal .portal-planet{background-position:0% center;filter:brightness(1.1) saturate(1.1)}
-.mars-portal{color:#ff735f}.mars-portal .portal-planet{background-position:100% center;filter:brightness(1.05) saturate(1.2)}
+/* SELENE & ARES PORTAL IMAGES */
+.portal-planet{width:73%;height:73%;border-radius:50%;display:block;background-size:cover;background-position:center;box-shadow:inset -18px -15px 28px #0009,0 0 28px currentColor;z-index:1}
+.moon-portal{color:#83dfff}
+.moon-portal .portal-planet{background-image:url("selene.jpg");filter:brightness(1.1) saturate(1.1)}
+.mars-portal{color:#ff735f}
+.mars-portal .portal-planet{background-image:url("ares.jpg");filter:brightness(1.05) saturate(1.2)}
 
 .portal strong{font:700 15px "Space Grotesk";letter-spacing:3px;margin-top:17px;color:#f5f1ff}
 .portal small{font:600 8px "DM Sans";letter-spacing:1.4px;color:#9694b2;margin-top:5px}
@@ -89,13 +91,4 @@ footer{border-top:1px solid #ffffff12;padding:28px 6%;display:flex;align-items:c
   position: absolute;
   inset: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  z-index: 0;
-  transition: transform .45s ease, filter .45s ease;
-}
-.artifact-card:hover .artifact-photo { transform: scale(1.06); filter: saturate(1.12); }
-.artifact-symbol { display: none; position: relative; z-index: 1; }
-.modal-visual { background-replace: no-repeat; background-size: cover; background-position: center; }
-.modal-visual span { text-shadow: 0 2px 8px #000; }
+  height: 100
