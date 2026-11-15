@@ -84,8 +84,7 @@ function startGame() {
 function selectPlanet(planetName) {
   if (!planets[planetName]) return;
 
-  window.location.href =
-    "game.html?world=" + planetName.toLowerCase();
+  window.location.href = "game.html?world=" + planetName.toLowerCase();
 }
 
 function showMessage(message) {
